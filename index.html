@@ -893,25 +893,29 @@
 
         <div data-aos="fade-left" data-aos-delay="100">
           <div class="form-card">
-            <div id="enquiry-form-wrap">
+            <form action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="093d07b3-ee39-4719-bf1a-14d32bc28a39" />
+              <input type="hidden" name="subject" value="New Enquiry – TS AV Website" />
+              <input type="hidden" name="from_name" value="TS AV Website" />
+              <input type="hidden" name="redirect" value="https://tsav.uk/thankyou.html" />
               <div class="form-row">
                 <div class="form-group">
                   <label for="f-name">Full Name</label>
-                  <input type="text" id="f-name" placeholder="Jane Smith" />
+                  <input type="text" id="f-name" name="name" placeholder="Jane Smith" required />
                 </div>
                 <div class="form-group">
                   <label for="f-email">Email Address</label>
-                  <input type="email" id="f-email" placeholder="jane@example.com" />
+                  <input type="email" id="f-email" name="email" placeholder="jane@example.com" required />
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group">
                   <label for="f-phone">Phone Number</label>
-                  <input type="tel" id="f-phone" placeholder="07700 000000" />
+                  <input type="tel" id="f-phone" name="phone" placeholder="07700 000000" />
                 </div>
                 <div class="form-group">
                   <label for="f-type">Enquiry Type</label>
-                  <select id="f-type">
+                  <select id="f-type" name="enquiry_type">
                     <option value="" disabled selected>Select a service…</option>
                     <option>Live Event AV</option>
                     <option>Fixed AV Installation</option>
@@ -925,64 +929,14 @@
               </div>
               <div class="form-group">
                 <label for="f-date">Event / Project Date (if known)</label>
-                <input type="date" id="f-date" />
+                <input type="date" id="f-date" name="event_date" />
               </div>
-              <div class="form-card">
-  <form action="https://api.web3forms.com/submit" method="POST">
-    <input type="hidden" name="access_key" value="093d07b3-ee39-4719-bf1a-14d32bc28a39" />
-    <input type="hidden" name="subject" value="New Enquiry – TS AV Website" />
-    <input type="hidden" name="from_name" value="TS AV Website" />
-    <input type="hidden" name="redirect" value="https://tsav.uk/thankyou.html" />
-
-    <div class="form-row">
-      <div class="form-group">
-        <label for="f-name">Full Name</label>
-        <input type="text" id="f-name" name="name" placeholder="Jane Smith" required />
-      </div>
-      <div class="form-group">
-        <label for="f-email">Email Address</label>
-        <input type="email" id="f-email" name="email" placeholder="jane@example.com" required />
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group">
-        <label for="f-phone">Phone Number</label>
-        <input type="tel" id="f-phone" name="phone" placeholder="07700 000000" />
-      </div>
-      <div class="form-group">
-        <label for="f-type">Enquiry Type</label>
-        <select id="f-type" name="enquiry_type">
-          <option value="" disabled selected>Select a service…</option>
-          <option>Live Event AV</option>
-          <option>Fixed AV Installation</option>
-          <option>PA Systems</option>
-          <option>Conference / Corporate AV</option>
-          <option>Streaming &amp; Broadcast</option>
-          <option>LED Walls &amp; Video Production</option>
-          <option>Other / Not Sure</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="f-date">Event / Project Date (if known)</label>
-      <input type="date" id="f-date" name="event_date" />
-    </div>
-
-    <div class="form-group">
-      <label for="f-message">Tell us about your project</label>
-      <textarea id="f-message" name="message" placeholder="Venue, size, requirements, anything useful…" required></textarea>
-    </div>
-
-    <button type="submit" class="form-submit">Send Enquiry →</button>
-  </form>
-</div>
-            <div class="form-success" id="form-success">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
-              <h3>Enquiry Sent!</h3>
-              <p>Thanks for reaching out. We'll be in touch shortly at the email you provided.</p>
-            </div>
+              <div class="form-group">
+                <label for="f-message">Tell us about your project</label>
+                <textarea id="f-message" name="message" placeholder="Venue, size, requirements, anything useful…" required></textarea>
+              </div>
+              <button type="submit" class="form-submit">Send Enquiry →</button>
+            </form>
           </div>
         </div>
       </div>
@@ -1060,19 +1014,6 @@
       });
     }
     setTimeout(animateCounters, 1200);
-
-    // ─── FORM SUBMIT ───
-    function submitForm() {
-      const name = document.getElementById('f-name').value.trim();
-      const email = document.getElementById('f-email').value.trim();
-      const message = document.getElementById('f-message').value.trim();
-      if (!name || !email || !message) {
-        alert('Please fill in your name, email, and project details.');
-        return;
-      }
-      document.getElementById('enquiry-form-wrap').style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
-    }
 
     // ─── HERO PARTICLE CANVAS ───
     (function() {
